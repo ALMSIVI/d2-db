@@ -3,8 +3,8 @@ from pathlib import Path
 
 from sqlalchemy import create_engine
 
-from d2_db.dependency import create_dependency
-from d2_db.services.__base__ import BaseService
+from dependency import create_dependency
+from services.__base__ import BaseService
 
 
 def init_db():
@@ -17,8 +17,10 @@ def save(txt_path: Path, service: BaseService):
         reader = csv.DictReader(f, delimiter='\t')
         index = 0
         for row in reader:
-            dtos.append(service.dto_from_txt(row, index))
-            index += 1
+            dto = service.dto_from_txt(row, index)
+            if dto is not None:
+                dtos.append(dto)
+                index += 1
 
     service.create_table()
     service.save_all(dtos)

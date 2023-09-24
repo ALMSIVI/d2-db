@@ -1,7 +1,7 @@
 from typing import Type
 
-from d2_db.services import ColorService
-from d2_db.services.__base__ import BaseService
+from services import *
+from services.__base__ import BaseService
 
 
 def create_dependency() -> list[Type[BaseService]]:
@@ -11,5 +11,10 @@ def create_dependency() -> list[Type[BaseService]]:
     """
     # TODO implement this
     return [
-        ColorService
+        BodyLocService,
+        ColorService,
+        CompositService,
+        EventService,
+        PlayerClassService,
+        StorePageService,
     ]

@@ -23,7 +23,7 @@ class BaseService(Generic[T, S], ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def dto_from_txt(self, row: dict[str, Any], index: int) -> T:
+    def dto_from_txt(self, row: dict[str, Any], index: int) -> T | None:
         return NotImplemented
 
     @abstractmethod
