@@ -14,7 +14,7 @@ class CompositService(BaseService[CompositeDTO, Composit]):
         return CompositeDTO(id=index, name=row['Name'], token=row['Token'])
 
     def dto_to_mediated(self, dto: CompositeDTO) -> Composit:
-        return Composit(id=dto.id, name=dto.name, token=dto.token)
+        return Composit(name=dto.name, token=dto.token)
 
     def create_table(self):
         CompositeDTO.metadata.create_all(self.engine)

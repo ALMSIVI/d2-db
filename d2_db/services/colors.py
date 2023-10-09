@@ -13,7 +13,7 @@ class ColorService(BaseService[ColorDTO, Color]):
         return ColorDTO(id=index, transform_color=row['Transform Color'], code=row['Code'])
 
     def dto_to_mediated(self, dto: ColorDTO) -> Color:
-        return Color(id=dto.id, transform_color=dto.transform_color, code=dto.code)
+        return Color(transform_color=dto.transform_color, code=dto.code)
 
     def create_table(self):
         ColorDTO.metadata.create_all(self.engine)

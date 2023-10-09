@@ -20,7 +20,7 @@ class PlayerClassService(BaseService[PlayerClassDTO, PlayerClass]):
         return PlayerClassDTO(id=index, player_class=row['Player Class'], code=row['Code'])
 
     def dto_to_mediated(self, dto: PlayerClassDTO) -> PlayerClass:
-        return PlayerClass(id=dto.id, player_class=dto.player_class, code=dto.code)
+        return PlayerClass(player_class=dto.player_class, code=dto.code)
 
     def create_table(self):
         PlayerClassDTO.metadata.create_all(self.engine)
